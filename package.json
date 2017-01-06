@@ -1,0 +1,33 @@
+{
+  "name": "timeseries-data",
+  "version": "1.0.0",
+  "description": "Data structure to manage monthly values.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andylhansen/timeseries-data.git"
+  },
+  "keywords": [
+    "time",
+    "series"
+  ],
+  "author": "Andy Hansen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andylhansen/timeseries-data/issues"
+  },
+  "homepage": "https://github.com/andylhansen/timeseries-data#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  },
+  "peerDependencies": {
+    "immutable": "^3.8.1"
+  },
+  "dependencies": {
+    "immutable": "^3.8.1"
+  }
+}

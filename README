@@ -1,0 +1,15 @@
+Stores monthly data points. Used Immutable data structure.
+
+const timeseries = new Timeseries();
+
+// set(year, month, value)
+const modified = timeseries.set(2017, 1, 26);
+
+// get(year, month)
+modified.get(2017, 1) // returns 26
+
+// add(other timeseries)
+// adds the corresponding values of the two timeseries
+
+// getRange(startYear, startMonth, endYear, endMonth)
+// get a List of values for each month inside the given range.
