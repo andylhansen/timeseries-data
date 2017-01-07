@@ -64,5 +64,10 @@ describe('timeseries', function() {
       a = a.set(2017, 5, 25);
       expect(a.getRange(2016, 10, 2017, 6).toJS()).to.eql([0, 0, 0, 0, 50, 0, 0, 25, 0]);
     });
+    
+    it('should use default value', function() {
+      let a = new Timeseries();
+      expect(a.getRange(2016, 10, 2017, 6, 5).toJS()).to.eql([5, 5, 5, 5, 5, 5, 5, 5, 5]);
+    });
   });
 });
