@@ -10,11 +10,11 @@ class Timeseries {
     this.data = data || Map();
   }
   set(year, month, value) {
-    const newData = this.data.update(year, defaultYear, (months) => months.set(month, value));
+    const newData = this.data.update(year.toString(), defaultYear, (months) => months.set(month, value));
     return new Timeseries(newData);
   }
   get(year, month) {
-    return this.data.get(year, defaultYear).get(month);
+    return this.data.get(year.toString(), defaultYear).get(month);
   }
   add(other) {
     const result = this.data.mergeWith((a, b) => a.zipWith((x, y) => x + y, b), other.data);
@@ -33,7 +33,7 @@ class Timeseries {
       if (year === endYear) {
         j = endMonth;
       }
-      result = result.concat(this.data.get(year, defaultValues).slice(i, j + 1));
+      result = result.concat(this.data.get(year.toString(), defaultValues).slice(i, j + 1));
     }
     return result;
   }
