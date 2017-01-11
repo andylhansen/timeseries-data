@@ -70,4 +70,12 @@ describe('timeseries', function() {
       expect(a.getRange(2016, 10, 2017, 6, 5).toJS()).to.eql([5, 5, 5, 5, 5, 5, 5, 5, 5]);
     });
   });
+  
+  describe('setRange', function() {
+    it('should set values in range', function() {
+      let ts = new Timeseries();
+      ts = ts.setRange(2017, 2, 2017, 5, 20);
+      expect(ts.getRange(2017, 1, 2017, 6).toJS()).to.eql([0, 20, 20, 20, 20, 0]);
+    });
+  });
 });

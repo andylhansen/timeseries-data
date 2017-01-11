@@ -20,6 +20,23 @@ class Timeseries {
     const result = this.data.mergeWith((a, b) => a.zipWith((x, y) => x + y, b), other.data);
     return new Timeseries(result);
   }
+  setRange(startYear, startMonth, endYear, endMonth, value, defaultValue) {
+    let result = new Timeseries(this.data);
+    for (let year = startYear; year <= endYear; year++) {
+      let i = 0;
+      let j = 11;
+      if (year === startYear) {
+        i = startMonth;
+      }
+      if (year === endYear) {
+        j = endMonth;
+      }
+      for (let month = i; month <= j; month++) {
+        result = result.set(year, month, value);
+      }
+    }
+    return result;
+  }
   getRange(startYear, startMonth, endYear, endMonth, defaultValue) {
     let result = List();
     const defaultValues = defaultValue ? this._createDefaultYear(defaultValue) : defaultYear;
