@@ -77,6 +77,10 @@ class Timeseries {
   }
   static getMinimumDate(timeseries) {
     let dates = timeseries.map(timeseries => timeseries.getMinimumDate());
+    dates = dates.filter(date => date !== null);
+    if (!dates.length) {
+      return null;
+    }
     dates = dates.map(item => new Date(item.year, item.month));
     const minDate = new Date(Math.min.apply(null, dates));
     return {
@@ -86,6 +90,10 @@ class Timeseries {
   }
   static getMaximumDate(timeseries) {
     let dates = timeseries.map(timeseries => timeseries.getMaximumDate());
+    dates = dates.filter(date => date !== null);
+    if (!dates.length) {
+      return null;
+    }
     dates = dates.map(item => new Date(item.year, item.month));
     const maxDate = new Date(Math.max.apply(null, dates));
     return {

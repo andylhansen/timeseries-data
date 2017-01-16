@@ -85,5 +85,19 @@ describe('timeseries', function() {
       ts = ts.setRange(2016, 2, 2017, 5, 20);
       expect(ts.getMinimumDate()).to.eql({year: 2016, month: 0});
     });
-  })
+  });
+  
+  describe('getMinimumDate static', function() {
+    it('should get the smallest date that is stored in multiple timeseries', function() {
+      let a = new Timeseries();
+      let b = new Timeseries();
+      a = a.setRange(2016, 2, 2017, 5, 20);
+      b = b.setRange(2016, 1, 2017, 5, 20);
+      expect(Timeseries.getMinimumDate([a, b])).to.eql({year: 2016, month: 0});
+    });
+    it('should handle empty timeseries', function() {
+      const ts = new Timeseries();
+      expect(Timeseries.getMinimumDate([ts])).to.equal(null);
+    });
+  });
 });
