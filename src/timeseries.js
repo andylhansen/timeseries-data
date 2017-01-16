@@ -20,6 +20,24 @@ class Timeseries {
     const result = this.data.mergeWith((a, b) => a.zipWith((x, y) => x + y, b), other.data);
     return new Timeseries(result);
   }
+  getMinimumDate() {
+    const years = this.data.keySeq().map(y => parseInt(y, 10));
+    if (years.size === 0) return null;
+    const year = Math.min.apply(null, years.toJS());
+    return {
+      month: 0,
+      year,
+    };
+  }
+  getMaximumDate() {
+    const years = this.data.keySeq().map(y => parseInt(y, 10));
+    if (years.size === 0) return null;
+    const year = Math.max.apply(null, years.toJS());
+    return {
+      month: 11,
+      year,
+    };
+  }
   setRange(startYear, startMonth, endYear, endMonth, value, defaultValue) {
     let result = new Timeseries(this.data);
     for (let year = startYear; year <= endYear; year++) {

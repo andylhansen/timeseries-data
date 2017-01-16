@@ -78,4 +78,12 @@ describe('timeseries', function() {
       expect(ts.getRange(2017, 1, 2017, 6).toJS()).to.eql([0, 20, 20, 20, 20, 0]);
     });
   });
+  
+  describe('getMinimumDate', function() {
+    it('should get the smallest date that is stored', function() {
+      let ts = new Timeseries();
+      ts = ts.setRange(2016, 2, 2017, 5, 20);
+      expect(ts.getMinimumDate()).to.eql({year: 2016, month: 0});
+    });
+  })
 });
