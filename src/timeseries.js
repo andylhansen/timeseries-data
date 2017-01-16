@@ -75,6 +75,24 @@ class Timeseries {
   _createDefaultYear(value) {
     return List([value, value, value, value, value, value, value, value, value, value, value, value]);
   }
+  static getMinimumDate(timeseries) {
+    let dates = timeseries.map(timeseries => timeseries.getMinimumDate());
+    dates = dates.map(item => new Date(item.year, item.month));
+    const minDate = new Date(Math.min.apply(null, dates));
+    return {
+      year: minDate.getFullYear(),
+      month: minDate.getMonth(),
+    };
+  }
+  static getMaximumDate(timeseries) {
+    let dates = timeseries.map(timeseries => timeseries.getMaximumDate());
+    dates = dates.map(item => new Date(item.year, item.month));
+    const maxDate = new Date(Math.max.apply(null, dates));
+    return {
+      year: maxDate.getFullYear(),
+      month: maxDate.getMonth(),
+    };
+  }
 }
 
 module.exports = Timeseries;
