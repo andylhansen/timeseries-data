@@ -1,1 +1,1 @@
-module.exports = require('./src/timeseries');
+module.exports = require('./lib/timeseries');
