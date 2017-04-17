@@ -55,6 +55,25 @@ class Timeseries {
     }
     return result;
   }
+  setGrowth(startYear, startMonth, endYear, endMonth, startValue, growth, round) {
+    let result = new Timeseries(this.data);
+    let calculated = startValue;
+    for (let year = startYear; year <= endYear; year++) {
+      let i = 0;
+      let j = 11;
+      if (year === startYear) {
+        i = startMonth;
+      }
+      if (year === endYear) {
+        j = endMonth;
+      }
+      for (let month = i; month <= j; month++) {
+        result = result.set(year, month, round ? Math.round(calculated) : calculated);
+        calculated = calculated + (calculated * growth);
+      }
+    }
+    return result;
+  }
   getRange(startYear, startMonth, endYear, endMonth, defaultValue) {
     let result = List();
     const defaultValues = defaultValue ? this._createDefaultYear(defaultValue) : defaultYear;

@@ -100,4 +100,17 @@ describe('timeseries', function() {
       expect(Timeseries.getMinimumDate([ts])).to.equal(null);
     });
   });
+  
+  describe('setGrowth', function() {
+    it('should set the values following a growth pattern', function() {
+      let a = new Timeseries();
+      a = a.setGrowth(2017, 1, 2017, 3, 10, 0.1, false);
+      expect(a.getRange(2017, 1, 2017, 3).toJS()).to.eql([10, 11, 12.1]);
+    });
+    it('should set the values following a growth pattern with rounded values', function() {
+      let a = new Timeseries();
+      a = a.setGrowth(2017, 1, 2017, 3, 10, 0.1, true);
+      expect(a.getRange(2017, 1, 2017, 3).toJS()).to.eql([10, 11, 12]);
+    });
+  });
 });
