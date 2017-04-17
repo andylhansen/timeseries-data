@@ -4,6 +4,7 @@
   "description": "Data structure to manage monthly values.",
   "main": "index.js",
   "scripts": {
+    "build": "babel ./src/timeseries.js > ./lib/timeseries.js",
     "test": "mocha"
   },
   "repository": {
